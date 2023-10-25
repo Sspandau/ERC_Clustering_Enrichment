@@ -40,7 +40,7 @@ def partneroverlap_mat(df, proteins, pct):
     return dfpct3
 
 def enrichment_clusters(df1, gene_list):
-    for i in range(df1.cluster.unique()): #len(df.subcluster.to_list()) df1.cluster.unique()
+    for i in range(df1.cluster.unique()):
         df1sub = df1[df1['cluster'] == i]
         print(i)
         gene_list2 = df1sub.proteins
@@ -70,7 +70,6 @@ def enrichment_subclusters(df1, gene_list):
         print(i)
         dfsub = df[df['subcluster'] == i]
         for j in dfsub.cluster.unique():
-            
             dfsub2 = dfsub[dfsub['cluster'] == j]
             gene_list2 = dfsub2.proteins
             if i == 1 and j == 0:
