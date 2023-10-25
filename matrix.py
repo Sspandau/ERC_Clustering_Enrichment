@@ -6,11 +6,11 @@ from functions_cluster import *
 
 @click.command()
 @click.option('--distance_type', default = "ranksum", help="The type of distance metric to use")
-@click.option('--input', help="The rank matrix for clustering")
+@click.option('--Input', help="The rank matrix for clustering")
 @click.option('--output', help="Path and name of ouput distance matrix")
 @click.option('--percent', default=1, help="What percentage of two proteins' top ranking partners should be compared")
 
-dfpct = pd.read_csv(sys.argv[2])
+dfpct = pd.read_csv(Input)
 dfpct = dfpct.iloc[:, 1:]
 proteins = dfpct.columns.to_list()
 dfpct.index = proteins
@@ -20,5 +20,5 @@ if distance_type == "ranksum":
 elif distance_type == "partneroverlap":
     dfpct2 = partneroverlap_mat(dfpct, proteins, percent)
 
-dfpct2.to_csv(output)
+dfpct2.to_csv(Output)
 
