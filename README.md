@@ -37,11 +37,11 @@ The following analysis is in R.
 ### Clustering
 Execute the following command to generate a newick file, cluster id csv, and cluster counts csv for the ranksum clustering.
 
-`R clustering_ranksum.R path/to/ranksum_matrix.csv path/to/newick.newick path/to/cluster_id.csv path/to/cluster_counts.csv k 150`
+`R clustering_ranksum.R /path/to/ranksum_matrix.csv path/to/newick.newick /path/to/cluster_id.csv /path/to/cluster_counts.csv k 150`
 
 Execute the following command to generate a newick file, cluster id csv, and cluster counts csv for the partner overlap clustering.
 
-`R clustering_partneroverlap.R path/to/partneroverlap_matrix.csv path/to/newick.newick path/to/cluster_id.csv path/to/cluster_counts.csv k 150`
+`R clustering_partneroverlap.R /path/to/partneroverlap_matrix.csv /path/to/newick.newick path/to/cluster_id.csv /path/to/cluster_counts.csv k 150`
 
 *The last two arguments indicate how you want to stop the hierarchical clustering and at what threshold. 
 
@@ -52,14 +52,20 @@ Execute the following command to generate a newick file, cluster id csv, and clu
 ### Subclustering
 Execute the following command to generate subcluster id csv and subcluster counts csv for the ranksum clustering.
 
-`R ranksum_subclustering.R path/to/ranksum_matrix.csv path/to/cluster_id.csv path/to/subcluster_id.csv path/to/subcluster_counts.csv 200`
+`R ranksum_subclustering.R /path/to/ranksum_matrix.csv /path/to/cluster_id.csv /path/to/subcluster_id.csv /path/to/subcluster_counts.csv 200`
 
 Execute the following command to generate subcluster id csv and subcluster counts csv for the ranksum clustering.
 
-`R partneroverlap_subclustering.R path/to/partneroverlap_matrix.csv path/to/cluster_id.csv path/to/subcluster_id.csv path/to/subcluster_counts.csv 200`
+`R partneroverlap_subclustering.R /path/to/partneroverlap_matrix.csv /path/to/cluster_id.csv /path/to/subcluster_id.csv /path/to/subcluster_counts.csv 200`
 
 *The last argument indicates which clusters should be split into subclusters based on that size. '200' would indicate that any cluster with > 200 proteins should be split into subclusters.
 
 ## Enrichment with Enrichr interface in Python
+Execute the following command to generate enrichment results of clusters or subclusters.
 
+`python3 enrichment.py --Input /path/to/cluster_id.csv --Output /path/to/enrichment.csv --clustering_level subcluster --Filter`
+
+*The `--clustering_level` argument indicates whether the enrichment is for clusters or subclusters.
+
+*The `--Filter` argument indecates whether you want to filter for the top enrichment results in each cluster or subcluster. 
 
