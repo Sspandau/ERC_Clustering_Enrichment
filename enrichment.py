@@ -8,7 +8,7 @@ from functions_cluster import *
 @click.command()
 @click.option('--Input', help="The path and name of the cluster csv from r scripts")
 @click.option('--Output', help="The path and name of the output csv")
-@click.option('--clustering_level', default='cluster', help="Indicate whether enrichment is for clusters or subclusters")
+@click.option('--clustering_level', type=str, default='cluster', help="Indicate whether enrichment is for clusters or subclusters")
 @click.option('--Filter', is_flag=True, help="Indicate whether to filter for top result in each cluster")
 
 
